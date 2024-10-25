@@ -130,7 +130,7 @@ def output_file(dirname: str, filename: str, package_manager: str):
         with open(path, "r") as f:
             data = f.read()
 
-        data = "\n".join([line for line in data.split("\n") if "rsconnect" not in line])
+        # data = "\n".join([line for line in data.split("\n") if "rsconnect" not in line])
 
         return {
             "filename": filename,
@@ -186,7 +186,8 @@ def pip_freeze():
 def filter_pip_freeze_output(pip_stdout: str):
     # Filter out dependency on `rsconnect` and ignore output lines from pip which start with `[notice]`
     return "\n".join(
-        [line for line in pip_stdout.split("\n") if (("rsconnect" not in line) and (line.find("[notice]") != 0))]
+        # Removed: ("rsconnect" not in line) and
+        [line for line in pip_stdout.split("\n") if ((line.find("[notice]") != 0))]
     )
 
 
