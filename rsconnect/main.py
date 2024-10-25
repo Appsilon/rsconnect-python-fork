@@ -893,10 +893,7 @@ def _warn_on_ignored_requirements(directory: str, requirements_file_name: str):
 @click.option(
     "--override-python-version",
     type=validation.PYTHON_VERSION,
-    help=(
-        "An optional python version to use instead of the version from "
-        "the detected environment."
-    )
+    help=("An optional python version to use instead of the version from " "the detected environment."),
 )
 @click.option(
     "--force-generate",
@@ -1043,10 +1040,7 @@ def deploy_notebook(
 @click.option(
     "--override-python-version",
     type=validation.PYTHON_VERSION,
-    help=(
-        "An optional python version to use instead of the version from "
-        "the detected environment."
-    )
+    help=("An optional python version to use instead of the version from " "the detected environment."),
 )
 @click.option(
     "--force-generate",
@@ -1093,10 +1087,7 @@ def deploy_voila(
     output_params(ctx, locals().items())
     app_mode = AppModes.JUPYTER_VOILA
     environment = create_python_environment(
-        path if isdir(path) else dirname(path),
-        force_generate,
-        python,
-        override_python_version
+        path if isdir(path) else dirname(path), force_generate, python, override_python_version
     )
 
     ce = RSConnectExecutor(
@@ -1252,10 +1243,7 @@ def deploy_manifest(
 @click.option(
     "--override-python-version",
     type=validation.PYTHON_VERSION,
-    help=(
-        "An optional python version to use instead of the version from "
-        "the detected environment."
-    )
+    help=("An optional python version to use instead of the version from " "the detected environment."),
 )
 @click.option(
     "--force-generate",
@@ -1613,12 +1601,9 @@ def generate_deploy_python(app_mode: AppMode, alias: str, min_version: str, desc
         ),
     )
     @click.option(
-    "--override-python-version",
-    type=validation.PYTHON_VERSION,
-    help=(
-        "An optional python version to use instead of the version from "
-        "the detected environment."
-    )
+        "--override-python-version",
+        type=validation.PYTHON_VERSION,
+        help=("An optional python version to use instead of the version from " "the detected environment."),
     )
     @click.option(
         "--force-generate",
@@ -1668,10 +1653,7 @@ def generate_deploy_python(app_mode: AppMode, alias: str, min_version: str, desc
         entrypoint = validate_entry_point(entrypoint, directory)
         extra_files_list = validate_extra_files(directory, extra_files)
         environment = create_python_environment(
-            directory,
-            force_generate,
-            python,
-            override_python_version=override_python_version
+            directory, force_generate, python, override_python_version=override_python_version
         )
 
         if app_mode == AppModes.PYTHON_SHINY:
@@ -1738,6 +1720,7 @@ generate_deploy_python(app_mode=AppModes.DASH_APP, alias="dash", min_version="1.
 generate_deploy_python(app_mode=AppModes.STREAMLIT_APP, alias="streamlit", min_version="1.8.4")
 generate_deploy_python(app_mode=AppModes.BOKEH_APP, alias="bokeh", min_version="1.8.4")
 generate_deploy_python(app_mode=AppModes.PYTHON_SHINY, alias="shiny", min_version="2022.07.0")
+generate_deploy_python(app_mode=AppModes.PYTHON_GRADIO, alias="gradio", min_version="2024.11.0")
 
 
 @deploy.command(
@@ -1793,10 +1776,7 @@ def write_manifest():
 @click.option(
     "--override-python-version",
     type=validation.PYTHON_VERSION,
-    help=(
-        "An optional python version to use instead of the version from "
-        "the detected environment."
-    )
+    help=("An optional python version to use instead of the version from " "the detected environment."),
 )
 @click.option(
     "--force-generate",
@@ -1888,10 +1868,7 @@ def write_manifest_notebook(
 @click.option(
     "--override-python-version",
     type=validation.PYTHON_VERSION,
-    help=(
-        "An optional python version to use instead of the version from "
-        "the detected environment."
-    )
+    help=("An optional python version to use instead of the version from " "the detected environment."),
 )
 @click.option(
     "--force-generate",
@@ -2020,10 +1997,7 @@ def write_manifest_voila(
 @click.option(
     "--override-python-version",
     type=validation.PYTHON_VERSION,
-    help=(
-        "An optional python version to use instead of the version from "
-        "the detected environment."
-    )
+    help=("An optional python version to use instead of the version from " "the detected environment."),
 )
 @click.option(
     "--force-generate",
@@ -2209,10 +2183,7 @@ def generate_write_manifest_python(app_mode: AppMode, alias: str, desc: Optional
     @click.option(
         "--override-python-version",
         type=validation.PYTHON_VERSION,
-        help=(
-            "An optional python version to use instead of the version from "
-            "the detected environment."
-        )
+        help=("An optional python version to use instead of the version from " "the detected environment."),
     )
     @click.option(
         "--force-generate",
@@ -2272,6 +2243,7 @@ generate_write_manifest_python(AppModes.PYTHON_API, alias="flask", desc="Flask A
 generate_write_manifest_python(AppModes.PYTHON_FASTAPI, alias="fastapi")
 generate_write_manifest_python(AppModes.PYTHON_SHINY, alias="shiny")
 generate_write_manifest_python(AppModes.STREAMLIT_APP, alias="streamlit")
+generate_write_manifest_python(AppModes.PYTHON_GRADIO, alias="gradio")
 
 
 # noinspection SpellCheckingInspection
