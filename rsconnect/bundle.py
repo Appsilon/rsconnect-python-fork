@@ -72,7 +72,7 @@ directories_ignore_list = [
     ".svn/",
     "__pycache__/",
     "packrat/",
-    "renv/",
+    # "renv/",
     "rsconnect-python/",
     "rsconnect/",
 ]
